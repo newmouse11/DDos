@@ -24,4 +24,4 @@ Most of this code was crafted with the help of Gemini AI.
 
 This is an Open Source project created for "testing purposes" only, not for causing actual harm.
 
-For certain parts of the code, you can stop the execution by simply typing stop in the terminal.
+For certain parts of the code, you can stop the execution by simply typing 'stop' in the terminal.
