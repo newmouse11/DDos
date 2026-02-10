@@ -2,7 +2,7 @@ import socket
 import multiprocessing
 import time
 
-target_host = "mabang.kro.kr"
+target_host = "192.168.0.1"
 target_port = 25565
 # 500Mbps 타격력을 위해 프로세스 수를 CPU 코어의 2배로 설정
 process_count = multiprocessing.cpu_count() * 2
@@ -57,4 +57,5 @@ if __name__ == "__main__":
     start_signal.set()
 
     for p in pool:
+
         p.join()
